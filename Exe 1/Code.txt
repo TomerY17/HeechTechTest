@@ -1,0 +1,56 @@
+Section 1-3
+
+(function(txt,lang) {
+    console.log("lets begin! and search for "+txt+" in "+lang);
+
+    var searchInputSelector = "#searchInput";
+    var searchInput = document.querySelectorAll(searchInputSelector)[0];
+    var searchLanguageSelector = "#searchLanguage";
+    var searchLanguageDDL = document.querySelectorAll(searchLanguageSelector)[0];
+    var searchButton = document.querySelectorAll("#search-form > fieldset > button")[0];
+
+
+    setSearchText(txt);
+    var isLangSet = setLang(lang);
+    if(isLangSet){
+        searchButton.click();
+    }
+
+
+    function setSearchText(txt) {
+        searchInput.value = txt;
+    }
+
+    function setLang(lang) {
+        var langItemId = -1;
+        //debugger;
+        for (var i = 0; i < searchLanguageDDL.options.length; i++) {
+            if (searchLanguageDDL.options[i].value === lang) {
+                langItemId = i;
+            }
+        }
+
+        if (langItemId > -1) {
+            console.log("lang was found in the lang list! lanf index = " + langItemId);
+            searchLanguageDDL.options.selectedIndex = langItemId;
+            console.log("lang was updated to " + lang);
+            return true;
+        } else {
+            console.error(lang + "was not found in lang list");
+        }
+    }
+})("Paris","fr");
+
+Section 4
+document.getElementById("firstHeading").innerText
+
+Section 5
+document.getElementById("firstHeading").getAttribute('lang')
+
+Section 6
+var links = document.getElementsByClassName('interlanguage-link-target')
+undefined
+for(var i=0; i<links.length; i++) {
+  if (links[i].innerText == 'English') console.log('English exists');
+}
+
